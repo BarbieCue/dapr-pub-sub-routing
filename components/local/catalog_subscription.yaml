@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v2alpha1
+kind: Subscription
+metadata:
+  name: item-pub-sub
+spec:
+  topic: items
+  routes:
+    rules:
+      - match: event.type == "org.example.item" && (event.data.name == "fork" || event.data.name == "spoon" || event.data.name == "cup")
+        path: /kitchen
+      - match: event.type == "org.example.item" && (event.data.name == "book" || event.data.name == "pen")
+        path: /office
+    default: /
+  pubsubname: item-pub-sub
+scopes:
+  - catalog-service
