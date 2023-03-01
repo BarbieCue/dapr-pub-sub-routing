@@ -15,7 +15,7 @@ fun main() {
 }
 
 fun Application.module() {
-    this@module.routing {
+    routing {
 
         post("/pen") {
             println("Received a pen:\n${call.receiveText()}")

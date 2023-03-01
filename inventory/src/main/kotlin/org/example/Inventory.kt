@@ -41,7 +41,7 @@ data class Item (
 )
 
 fun Application.module() {
-    this@module.routing {
+    routing {
 
         post("/{item}") {
             val client = HttpClient(CIO) {
